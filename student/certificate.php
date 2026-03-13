@@ -1,6 +1,5 @@
 <?php
-require_once '../includes/db.php';
-session_start();
+require_once '../includes/init.php';
 
 if (!isset($_SESSION['user_id']) || !isset($_GET['course_id'])) {
     header("Location: /auth/login.php");

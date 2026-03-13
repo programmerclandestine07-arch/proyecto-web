@@ -1,6 +1,5 @@
 <?php
-require_once '../includes/db.php';
-include '../includes/header.php';
+require_once '../includes/init.php';
 
 $error = '';
 
@@ -16,12 +15,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['name'] = $user['name'];
         $_SESSION['role'] = $user['role'];
-        header("Location: /" . $user['role'] . "/dashboard.php");
+        header("Location: /proyecto-web/" . $user['role'] . "/dashboard.php");
         exit;
     } else {
         $error = "Invalid email or password!";
     }
 }
+
+include '../includes/header.php';
 ?>
 
 <div class="form-container">

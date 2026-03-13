@@ -1,9 +1,8 @@
 <?php
-require_once '../includes/db.php';
-include '../includes/header.php';
+require_once '../includes/init.php';
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    header("Location: /auth/login.php");
+    header("Location: /proyecto-web/auth/login.php");
     exit;
 }
 
@@ -11,6 +10,8 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
 $userCount = $pdo->query("SELECT COUNT(*) FROM users WHERE role = 'student'")->fetchColumn();
 $courseCount = $pdo->query("SELECT COUNT(*) FROM courses")->fetchColumn();
 $enrollCount = $pdo->query("SELECT COUNT(*) FROM enrollments")->fetchColumn();
+
+include '../includes/header.php';
 ?>
 
 <div class="container">

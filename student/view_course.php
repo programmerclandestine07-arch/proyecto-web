@@ -1,9 +1,8 @@
 <?php
-require_once '../includes/db.php';
-include '../includes/header.php';
+require_once '../includes/init.php';
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'student') {
-    header("Location: /auth/login.php");
+    header("Location: /proyecto-web/auth/login.php");
     exit;
 }
 
@@ -53,6 +52,8 @@ if ($current_lesson_id) {
 $total_lessons = count($lessons);
 $completed_count = count(array_intersect($completed_lessons, array_column($lessons, 'id')));
 $progress_percent = $total_lessons > 0 ? round(($completed_count / $total_lessons) * 100) : 0;
+
+include '../includes/header.php';
 ?>
 
 <div class="container">

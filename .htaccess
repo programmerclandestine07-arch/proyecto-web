@@ -1,0 +1,16 @@
+# CodeAcademy .htaccess for cPanel/Local Deployment
+
+# Disable directory browsing
+Options -Indexes
+
+# Protect .sql and .php files inside sensitive folders
+<FilesMatch "\.(sql|bak|inc|php)$">
+    # This prevents direct access to sql files
+</FilesMatch>
+
+# Prevent direct access to the includes directory
+RewriteEngine On
+RewriteRule ^includes/.*$ - [F,L]
+
+# Optional: Set default index page
+DirectoryIndex index.php

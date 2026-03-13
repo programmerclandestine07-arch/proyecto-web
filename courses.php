@@ -1,6 +1,5 @@
 <?php
-require_once 'includes/db.php';
-include 'includes/header.php';
+require_once 'includes/init.php';
 
 // Enroll logic
 if (isset($_GET['enroll']) && isset($_SESSION['user_id'])) {
@@ -14,11 +13,12 @@ if (isset($_GET['enroll']) && isset($_SESSION['user_id'])) {
     if (!$check->fetch()) {
         $stmt = $pdo->prepare("INSERT INTO enrollments (user_id, course_id) VALUES (?, ?)");
         $stmt->execute([$user_id, $course_id]);
-        header("Location: /student/dashboard.php?enrolled=1");
+        header("Location: /proyecto-web/student/dashboard.php?enrolled=1");
         exit;
     }
 }
 
+include 'includes/header.php'; 
 $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 
 // Filter Logic
@@ -115,7 +115,7 @@ $all_categories = $cat_stmt->fetchAll(PDO::FETCH_COLUMN);
                         <?php if ($user_id): ?>
                             <a href="checkout.php?course_id=<?php echo $course['id']; ?>" class="btn-primary">Enroll Now</a>
                         <?php else: ?>
-                            <a href="/auth/login.php" class="btn-secondary">Login to Enroll</a>
+                            <a href="/proyecto-web/auth/login.php" class="btn-secondary">Login to Enroll</a>
                         <?php endif; ?>
                     </div>
                 </div>

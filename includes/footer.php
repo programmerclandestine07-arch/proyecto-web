@@ -7,8 +7,8 @@
                 </div>
                 <div class="footer-links">
                     <h4>Quick Links</h4>
-                    <a href="/courses.php">Courses</a>
-                    <a href="/auth/register.php">Register</a>
+                    <a href="/proyecto-web/courses.php">Courses</a>
+                    <a href="/proyecto-web/auth/register.php">Register</a>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -16,7 +16,7 @@
             </div>
         </div>
     </footer>
-    <script src="/assets/js/main.js"></script>
+    <script src="/proyecto-web/assets/js/main.js"></script>
     <script>lucide.createIcons();</script>
 </body>
 </html>

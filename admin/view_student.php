@@ -1,9 +1,8 @@
 <?php
-require_once '../includes/db.php';
-include '../includes/header.php';
+require_once '../includes/init.php';
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    header("Location: /auth/login.php");
+    header("Location: /proyecto-web/auth/login.php");
     exit;
 }
 
@@ -35,6 +34,8 @@ $stmt = $pdo->prepare("
 ");
 $stmt->execute([$student_id, $student_id]);
 $enrollments = $stmt->fetchAll();
+
+include '../includes/header.php';
 ?>
 
 <div class="container">

@@ -1,9 +1,8 @@
 <?php
-require_once 'includes/db.php';
-include 'includes/header.php';
+require_once 'includes/init.php';
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: /auth/login.php");
+    header("Location: /proyecto-web/auth/login.php");
     exit;
 }
 
@@ -29,7 +28,7 @@ if (!$course) {
 $check = $pdo->prepare("SELECT * FROM enrollments WHERE user_id = ? AND course_id = ?");
 $check->execute([$user_id, $course_id]);
 if ($check->fetch()) {
-    header("Location: /student/dashboard.php");
+    header("Location: /proyecto-web/student/dashboard.php");
     exit;
 }
 
@@ -45,10 +44,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Payment "Successful" - Enroll student
         $stmt = $pdo->prepare("INSERT INTO enrollments (user_id, course_id) VALUES (?, ?)");
         $stmt->execute([$user_id, $course_id]);
-        header("Location: /student/dashboard.php?payment_success=1");
+        header("Location: /proyecto-web/student/dashboard.php?payment_success=1");
         exit;
     }
 }
+
+include 'includes/header.php';
 ?>
 
 <div class="container" style="padding: 80px 0;">

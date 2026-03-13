@@ -1,9 +1,8 @@
 <?php
-require_once '../includes/db.php';
-include '../includes/header.php';
+require_once '../includes/init.php';
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    header("Location: /auth/login.php");
+    header("Location: /proyecto-web/auth/login.php");
     exit;
 }
 
@@ -52,6 +51,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $error = "All fields are required!";
     }
 }
+
+include '../includes/header.php';
 ?>
 
 <div class="container">

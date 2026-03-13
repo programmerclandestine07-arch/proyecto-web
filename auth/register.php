@@ -1,6 +1,5 @@
 <?php
-require_once '../includes/db.php';
-include '../includes/header.php';
+require_once '../includes/init.php';
 
 $error = '';
 
@@ -18,6 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $error = "Email already exists!";
     }
 }
+
+include '../includes/header.php';
 ?>
 
 <div class="form-container">

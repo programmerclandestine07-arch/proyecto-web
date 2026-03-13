@@ -1,5 +1,5 @@
 <?php 
-require_once 'includes/db.php';
+require_once 'includes/init.php';
 include 'includes/header.php'; 
 
 // Fetch featured courses
@@ -13,8 +13,8 @@ $courses = $stmt->fetchAll();
             <h1>Unlock Your Potential with <span>CodeAcademy</span></h1>
             <p>Master the most in-demand programming languages from industry experts.</p>
             <div class="hero-btns">
-                <a href="/auth/register.php" class="btn-primary">Get Started for Free</a>
-                <a href="/courses.php" class="btn-secondary">View Courses</a>
+                <a href="/proyecto-web/auth/register.php" class="btn-primary">Get Started for Free</a>
+                <a href="/proyecto-web/courses.php" class="btn-secondary">View Courses</a>
             </div>
         </div>
     </section>
@@ -33,7 +33,7 @@ $courses = $stmt->fetchAll();
                         <p><?php echo htmlspecialchars($course['description']); ?></p>
                         <div class="card-footer" style="margin-top: 2rem; display: flex; justify-content: space-between; align-items: center;">
                             <span class="price" style="font-weight: 800; font-size: 1.25rem;">$<?php echo number_format($course['price'], 2); ?></span>
-                            <a href="/courses.php" class="btn-secondary">Details</a>
+                            <a href="/proyecto-web/courses.php" class="btn-secondary">Details</a>
                         </div>
                     </div>
                 </div>
