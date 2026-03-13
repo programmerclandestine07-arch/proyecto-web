@@ -23,14 +23,18 @@ $courses = $stmt->fetchAll();
         <div class="container">
             <h2 class="section-title">Featured Courses</h2>
             <div class="course-grid">
-                <?php foreach ($courses as $course): ?>
-                <div class="course-card">
-                    <i data-lucide="code" class="card-icon"></i>
-                    <h3><?php echo htmlspecialchars($course['title']); ?></h3>
-                    <p><?php echo htmlspecialchars($course['description']); ?></p>
-                    <div class="card-footer">
-                        <span class="price">$<?php echo number_format($course['price'], 2); ?></span>
-                        <a href="/courses.php" class="btn-secondary">Details</a>
+                <?php foreach ($courses as $course): 
+                    $thumbnail = !empty($course['thumbnail']) ? '/assets/img/uploads/' . $course['thumbnail'] : 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80';
+                ?>
+                <div class="course-card" style="padding: 0; overflow: hidden;">
+                    <img src="<?php echo $thumbnail; ?>" alt="<?php echo htmlspecialchars($course['title']); ?>" style="width: 100%; height: 200px; object-fit: cover;">
+                    <div style="padding: 2rem;">
+                        <h3><?php echo htmlspecialchars($course['title']); ?></h3>
+                        <p><?php echo htmlspecialchars($course['description']); ?></p>
+                        <div class="card-footer" style="margin-top: 2rem; display: flex; justify-content: space-between; align-items: center;">
+                            <span class="price" style="font-weight: 800; font-size: 1.25rem;">$<?php echo number_format($course['price'], 2); ?></span>
+                            <a href="/courses.php" class="btn-secondary">Details</a>
+                        </div>
                     </div>
                 </div>
                 <?php endforeach; ?>

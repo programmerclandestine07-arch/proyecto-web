@@ -16,6 +16,7 @@
             </div>
         </div>
     </footer>
+    <script src="/assets/js/main.js"></script>
     <script>lucide.createIcons();</script>
 </body>
 </html>

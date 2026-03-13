@@ -14,6 +14,10 @@ $enrollCount = $pdo->query("SELECT COUNT(*) FROM enrollments")->fetchColumn();
 ?>
 
 <div class="container">
+    <div class="sidebar-mobile-header" id="sidebar-toggle">
+        <span>Admin Menu</span>
+        <i data-lucide="chevron-down"></i>
+    </div>
     <div class="dashboard-grid">
         <aside class="sidebar">
             <div class="sidebar-user">
@@ -21,8 +25,8 @@ $enrollCount = $pdo->query("SELECT COUNT(*) FROM enrollments")->fetchColumn();
             </div>
             <nav class="sidebar-nav">
                 <a href="dashboard.php" class="active">Overview</a>
-                <a href="#">Manage Courses</a>
-                <a href="#">Manage Students</a>
+                <a href="manage_courses.php">Manage Courses</a>
+                <a href="manage_students.php">Manage Students</a>
             </nav>
         </aside>
 

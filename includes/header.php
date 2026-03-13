@@ -15,7 +15,7 @@ session_start();
     <header class="navbar">
         <div class="container">
             <a href="/" class="logo">Code<span>Academy</span></a>
-            <nav class="nav-links">
+            <nav class="nav-links" id="nav-menu">
                 <a href="/">Home</a>
                 <a href="/courses.php">Courses</a>
                 <?php if (isset($_SESSION['user_id'])): ?>
@@ -26,5 +26,8 @@ session_start();
                     <a href="/auth/register.php" class="btn-primary">Get Started</a>
                 <?php endif; ?>
             </nav>
+            <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Menu">
+                <i data-lucide="menu"></i>
+            </button>
         </div>
     </header>

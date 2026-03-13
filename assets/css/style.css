@@ -75,6 +75,68 @@ body {
 
 .nav-links a:hover { color: var(--primary); }
 
+/* Mobile Menu Toggle Button */
+.mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-main);
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+/* Dashboard Sidebar Mobile Header */
+.sidebar-mobile-header {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--card-bg);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Sidebars in Mobile */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: var(--navbar-height);
+        left: 0;
+        width: 100%;
+        background: #1e293b;
+        padding: 2rem;
+        gap: 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: center;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .mobile-toggle {
+        display: block;
+    }
+
+    .sidebar-mobile-header {
+        display: flex;
+    }
+
+    .sidebar {
+        display: none;
+        width: 100% !important;
+        margin-bottom: 2rem;
+    }
+
+    .sidebar.active {
+        display: block;
+    }
+}
+
 /* Buttons */
 .btn-primary {
     background: linear-gradient(135deg, var(--primary), var(--secondary));
