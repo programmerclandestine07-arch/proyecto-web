@@ -1,16 +1,25 @@
-# CodeAcademy .htaccess for cPanel/Local Deployment
+# CodeAcademy .htaccess - Versión Segura para Apache 2.4
 
-# Disable directory browsing
+# Desactivar el listado de carpetas
 Options -Indexes
 
-# Protect .sql and .php files inside sensitive folders
-<FilesMatch "\.(sql|bak|inc|php)$">
-    # This prevents direct access to sql files
+# Protección del archivo .env y archivos .sql (Sintaxis Apache 2.4)
+<FilesMatch "^\.env|.*\.sql$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order deny,allow
+        Deny from all
+    </IfModule>
 </FilesMatch>
 
-# Prevent direct access to the includes directory
-RewriteEngine On
-RewriteRule ^includes/.*$ - [F,L]
+# Protección de la carpeta includes
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    # Si alguien intenta entrar a /includes/ directamente, lanzar error 403 Forbidden
+    RewriteRule ^includes/.*$ - [F,L]
+</IfModule>
 
-# Optional: Set default index page
+# Establecer la página de inicio
 DirectoryIndex index.php
